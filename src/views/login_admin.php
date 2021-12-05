@@ -1,5 +1,5 @@
 <?php
-
+//Seguridad para que no se pueda entrar directamente usando el link
 session_start();
 error_reporting(0);
 $session = $_SESSION['cedula'];

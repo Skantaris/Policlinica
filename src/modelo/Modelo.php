@@ -3,13 +3,14 @@ namespace Policlinica\modelo;
 
 class Modelo{
 
+    //Conectamos a la base de datos
     public  $connection ;
 
     public function __construct(){
         $this->connection = mysqli_connect('localhost', 'root', '', 'policlinica');
     }
 
-
+    //funciones de inicio
     public function insertardatos(){
         if (isset($_POST['submit'])){
             $cedula = $_POST['cedula'];
@@ -82,6 +83,7 @@ class Modelo{
         
     }
 
+    //Funciones de Admin
     public function AgregarMedico (){
         if (isset($_POST ['submit'])){
             $cedula = $_POST ['ced'];
@@ -205,6 +207,7 @@ class Modelo{
         }
     }
 
+    //Funciones de Paciente
     public function CrearCitaPaciente(){
         if (isset($_POST['submit'])){
             $clinic = $_POST['clinic'];
@@ -295,6 +298,7 @@ class Modelo{
         }
     }
 
+    //Funciones de Medico
     public function CrearCitaMed(){
         if (isset($_POST['submit'])){
             $clinic = $_POST['clinic'];

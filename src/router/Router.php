@@ -4,6 +4,7 @@ namespace Policlinica\router;
 use Policlinica\modelo\Modelo;
 use Policlinica\App;
 class Router{
+    //Funcion para agregar ruta disponible para el usuario
     public array $routs = [];
     public function addRouts(string $rout, string $view){
         $this->routs[$rout] = $view;
@@ -19,7 +20,7 @@ class Router{
         if (isset($this->routs[$path])){  //Si el path existe correr esto
             $pagina=$this->routs[$path];
             $test=['modelo'=>new Modelo()];
-            if ($this->routs[$path] === 'registrar'){
+            if ($this->routs[$path] === 'registrar'){       //Si el path es igual a === se agrega la funcion
                 if (strtolower($_SERVER['REQUEST_METHOD']) === 'post'){
                     $modelo = new Modelo();
                     echo $modelo->insertardatos();

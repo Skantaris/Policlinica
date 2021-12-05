@@ -9,7 +9,7 @@
             self::$DIR = $dir;
             $this->router = new Router();
         }
-
+        //empieza el codigo
         public function inicio(){
             $this->router->result();
         }
