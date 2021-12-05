@@ -1,0 +1,80 @@
+/*
+Color
+Oscuro = #2C3A40
+Medio = #395959
+MedioBlanco = #8AA6A1
+Disable = #E0E0E0
+Cofirmar = #39C090
+blanco = #FFFFFF
+Alerta = #AE0B0B
+Link = #0527A3
+*/
+.btn-pri {
+    color: #FFFFFF;
+    background-color: #2C3A40;
+    border-color: none;
+    border-radius: 0rem;
+  }
+
+  .a2:hover {
+    color: #FFFFFF;
+  }
+
+  .grande{
+    font-size: 3rem
+  }
+
+  /* Colores */
+  .medio{
+    color: #395959;
+  }
+  .blanco{
+    color: #FFFFFF;
+  }
+  .disable{
+    color: #E0E0E0;
+  }
+
+  /* backgroud color  */
+  .bg-disable{
+    background-color: #E0E0E0;
+  }
+
+  .bg-MedioBlanco{
+    background-color: #8AA6A1;
+  }
+
+
+  /* llenar el margin */
+  .padx{
+    padding-right:0vmax;
+  }
+
+   /*......................................*/
+  /* header de registrar usuario */
+  .header-reg{
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+  }
+   /*......................................*/
+  /* footer de registrar usuario */
+  .fo-RU{
+    background-image: url(../img/img/footer.png);
+    background-size: cover;
+  }
+
+  /*......................................*/
+  /* box negativo */
+  .cancel-box{
+    border-color: #AE0B0B;
+    background-color: #FFFFFF;
+    color: #AE0B0B;
+  }
+
+  .cancel-box:hover{
+    background-color: #AE0B0B;
+    color: #FFFFFF;
+
+
+  }
