@@ -1,14 +1,3 @@
-<?php
-
-session_start();
-error_reporting(0);
-$session = $_SESSION['cedula'];
-if ($session == null || $session = ''){
-    echo "no tiene acceso";
-    die();
-
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,34 +14,41 @@ if ($session == null || $session = ''){
 <body>
 <!--superior de la pagina-->
 <header class="d-flex align-items-center justify-content-between p-5 bg-MedioBlanco">
-    <!-- Doctor -->
+
+    <!-- admin -->
     <div class="logo">
-        <a href="home-med"><img src="Logo/Logo.svg" alt="Policlínicas
+        <a href="home-admin"><img src="Logo/Logo.svg" alt="Policlínicas
             de la CSS"></a>
     </div>
-    <div class="d-flex align-items-center me-5 flex-wrap">
+    <div class="d-flex align-items-center me-5 ">
         <ul class="nav nav-pills me-5">
-            <li class="nav-item">
-                <a class="btn" href="/"> <h4>Cerrar Sesion</h4>
-                    <?php
-                    $modelo->CerrarSesion();
-                    ?>
-                </a>
-            </li>
-            <li class="nav-item flex-wrap">
-                <a class="btn" href="crear_cita_med"><h4>Crear cita</h4></a>
-            </li>
-            <li class="nav-item">
-                <a class="btn" href="mis-citas_med"> <h4>Mis citas</h4></a>
-            </li>
-            <li class="nav-item">
-                <a class="btn" href="mis-pacientes"> <h4>Mis Pacientes</h4></a>
+            <li class="nav-item flex-wrap dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="edicion">
+                    <h4>Edición</h4>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="edicion">
+
+                    <li>
+                        <a class="dropdown-item" href="addMedico">Editar Medicos</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="addEspec">Editar Especialidades</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="misClinicas">Editar Clinica</a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="/">Cerrar Sesion
+                            <?php
+                            $modelo->CerrarSesion();
+                            ?>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
         <i class="bi bi-person-circle grande"></i>
     </div>
-
-
 
 
 </header>

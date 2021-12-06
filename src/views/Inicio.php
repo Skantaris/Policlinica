@@ -16,8 +16,8 @@
     <!--superior de la pagina-->
     <header class="d-flex align-items-center justify-content-between p-5 bg-MedioBlanco">
         <div class="logo">
-            <img src="Logo/Logo.svg" alt="Policlínicas 
-            de la CSS">
+            <a href="/"><img src="Logo/Logo.svg" alt="Policlínicas
+            de la CSS"></a>
         </div>
         <div class="">
             <a href="registrarse" class="btn">Registrar Cuenta</a>

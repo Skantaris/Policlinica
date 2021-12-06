@@ -28,8 +28,8 @@ die();
 
     <!-- admin -->
     <div class="logo">
-        <img src="Logo/Logo.svg" alt="Policlínicas
-            de la CSS">
+        <a href="home-admin"><img src="Logo/Logo.svg" alt="Policlínicas
+            de la CSS"></a>
     </div>
     <div class="d-flex align-items-center me-5 ">
         <ul class="nav nav-pills me-5">

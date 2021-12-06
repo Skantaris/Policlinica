@@ -8,12 +8,16 @@
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="css/personalizar.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
-    <title>Document</title>
+    <title>Policlínicas de la CSS</title>
 </head>
+
+<!--Comienza la informacion de la pagina-->
 <body>
+<!--superior de la pagina-->
 <header class="d-flex align-items-center justify-content-between p-5 bg-MedioBlanco">
+    <!-- Doctor -->
     <div class="logo">
-        <a href="home-paciente"><img src="Logo/Logo.svg" alt="Policlínicas
+        <a href="home-med"><img src="Logo/Logo.svg" alt="Policlínicas
             de la CSS"></a>
     </div>
     <div class="d-flex align-items-center me-5 flex-wrap">
@@ -26,79 +30,65 @@
                 </a>
             </li>
             <li class="nav-item flex-wrap">
-                <a class="btn" href="crear_cita"><h4>Crear cita</h4></a>
+                <a class="btn" href="crear_cita_med"><h4>Crear cita</h4></a>
             </li>
             <li class="nav-item">
-                <a class="btn" href="citas"> <h4>Mis citas</h4></a>
+                <a class="btn" href="mis-citas_med"> <h4>Mis citas</h4></a>
             </li>
-
+            <li class="nav-item">
+                <a class="btn" href="mis-pacientes"> <h4>Mis Pacientes</h4></a>
+            </li>
         </ul>
         <i class="bi bi-person-circle grande"></i>
     </div>
+
+
+
+
 </header>
 
-<div class="container pt-5 medio">
-    <h1 class="fw-bold">AGENDAR CITA</h1>
-    <div class="container">
-        <P>Llene los siguientes campos: </P>
-        <form action="" method="POST">
-        <div class="pb-3">
-            <p>Seleccione la clínica quiere asistir</p>
-            <select class="form-select" name="clinic" id="clinic" >
-                <?php
-                $modelo->MostrarClinicaNombre();
-                ?>
-            </select>
+<div class="container-xxl">
+    <div class="d-flex flex-row justify-content-between p-5">
+        <div class="texto">
+            <h1 class="fs-1 fw-bold">Salud</h1>
+            <h3>El que tiene salud, tiene esperanza; <br> el que tiene esperanza, lo tiene todo</h3>
         </div>
-        <div class="pb-3">
-            <p>Seleccione la especialidad que se desea consultar</p>
-            <select class="form-select" name="espec" id="espec" >
-                <?php
-                $modelo->MostrarEspecialidad();
-                ?>
-            </select>
-        </div>
-        <div class="pb-3">
-            <p>Seleccione la fecha deseada</p>
-            <input type="date" name="fecha" id="fecha">
-        </div>
-        <div class="pb-3">
-            <p>Seleccione la hora deseada</p>
-            <input type="time" name="tiempo" id="tiempo">
-        </div>
-            <p>Ingrese su cedula</p>
-            <select name="ced" id="ced">
-                <?php
-                $modelo->MostrarCedula();
-                ?>
-            </select>
-    </div>
-    <div class="d-flex flex-row justify-content-end pb-5">
-        <!-- Button trigger modal -->
-        <button class=" cancel-box btn btn-secondary px-4 me-2" data-bs-toggle="modal" data-bs-target="#regresar"">Regresar al menu</button>
-        <button class=" btn btn-secondary px-4" name="submit" type="submit">Confirmar</button>
-    </div>
-    </form>
-
-    <!-- Modal -->
-   <div class="modal fade" id="regresar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-MedioBlanco">
-                    <h1 class="modal-title disable" id="exampleModalLabel">Regresar al menu</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ¿Esta seguro que desea cancelar la programación de cita?
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary px-4" href="Inicio.html">Confirmar</a>
-                </div>
-            </div>
+        <div class="imagen">
+            <img src="iconos/medicine.svg" alt="imagenMedicina">
         </div>
     </div>
 </div>
 
+<div class="d-flex flex-column p-5 border border-primary">
+    <h1 class="fs-1 fw-bold">Creacion cita</h1>
+    <br><br>
+    <div class="container-xxl">
+        <h3 class=" text-center">Para creación de cita sigue los siguiente pasos</h3>
+        <br><br>
+        <div class="row text-center">
+            <div class="col">
+                <img src="img/1.png" alt="1">
+                <div class="">
+                    <h4>Para creación de cita sigue los siguiente pasos</h4>
+                </div>
+            </div>
+            <div class="col">
+                <img src="img/2.png" alt="1">
+                <div class="">
+                    <h4>Ir a  Crear Cita</h4>
+                </div>
+            </div>
+            <div class="col">
+                <img src="img/3.png" alt="1">
+                <div class="">
+                    <h4>Rellenar campos</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!--Pie de pagina -->
 <footer class="bg-MedioBlanco d-flex flex-row justify-content-between ">
     <div class=" col">
         <a class="d-flex justify-content-center py-3" href="https://w3.css.gob.pa/"><img src="img/panama caja seguro social 1.png" alt=""></a>
@@ -136,6 +126,5 @@
 </footer>
 
 <script src="bootstrap/js/bootstrap.bundle.js"></script>
-
 </body>
 </html>
