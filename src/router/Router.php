@@ -87,6 +87,13 @@ class Router{
                 }
             }
 
+            if ($this->routs[$path] === 'mis_citas_med'){
+                if (strtolower($_SERVER['REQUEST_METHOD']) === 'post'){
+                    $modelo = new Modelo();
+                    echo $modelo->CancelarCita();
+                }
+            }
+
 
             $this->imprimir($pagina, $test);
         } else {

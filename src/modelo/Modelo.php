@@ -216,9 +216,11 @@ class Modelo{
             $hora = $_POST['tiempo'];
             $cedula = $_POST['ced'];
             $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and hora_disponible = '$hora' and fecha_disponible = '$fecha'";
+            $query3 = "SELECT Hora_asignada, Fecha_asignada FROM citas WHERE current_date > '$fecha' and current_time > '$hora'";
             $result2 = mysqli_query($this->connection, $query2);
+            $result3 = mysqli_query($this->connection, $query3);
             $record = mysqli_fetch_array($result2);
-           if ($record){
+           if ($record and $result3){
                $query = "INSERT INTO citas(clinica_name,especialidad, Fecha_asignada, Hora_asignada, Permisos, Rol_usuario,Cedula_usuario) VALUES ('$clinic','$especial', '$fecha', '$hora', 'admin', '2', '$cedula')";
                $result = mysqli_query($this->connection, $query);
                echo "Cita Creada";
@@ -307,9 +309,11 @@ class Modelo{
             $hora = $_POST['tiempo'];
             $cedula = $_POST['ced'];
             $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and hora_disponible = '$hora' and fecha_disponible = '$fecha'";
+            $query3 = "SELECT Hora_asignada, Fecha_asignada FROM citas WHERE current_date > '$fecha' and current_time > '$hora'";
             $result2 = mysqli_query($this->connection, $query2);
+            $result3 = mysqli_query($this->connection, $query3);
             $record = mysqli_fetch_array($result2);
-            if ($record){
+            if ($record and $result3){
                 $query = "INSERT INTO citas(clinica_name,especialidad, Fecha_asignada, Hora_asignada, Permisos, Rol_usuario, Cedula_usuario) VALUES ('$clinic','$especial', '$fecha', '$hora', 'admin', '3', '$cedula')";
                 $result = mysqli_query($this->connection, $query);
                 echo "Cita Creada";
@@ -374,6 +378,16 @@ class Modelo{
             echo "<br>";
         }
     }
+
+    public function MostrarCodCitaMed(){
+        $query = "SELECT Codigo_cita FROM citas WHERE Rol_usuario = '3'";
+        $result = mysqli_query($this->connection, $query);
+        while ($row=mysqli_fetch_assoc($result)) {
+            $id = $row['Codigo_cita'];
+            echo "<option value='$id'>$id</option>";
+        }
+    }
+
 
 
 

@@ -41,7 +41,7 @@
 </header>
 <div class="container pt-5 medio">
     <h1 class="fw-bold">MIS CITAS</h1>
-    <div class="d-flex flex-row container justify-content-center">
+    <div class="d-flex flex-row container justify-content-center mb-5">
         <div class="">
             <img src="img/esterocopio.svg" alt="">
         </div>
@@ -54,7 +54,7 @@
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-end">
-                <a href="reagendar"><button class=" btn btn-secondary px-4 me-2" ">Reagendar cita</button></a>
+                <a href="reagendar-med"><button class=" btn btn-secondary px-4 me-2" ">Reagendar cita</button></a>
                 <!-- Button trigger modal -->
                 <button class=" cancel-box btn btn-secondary px-4" data-bs-toggle="modal" data-bs-target="#cancelar">Cancelar cita</button>
 
@@ -72,7 +72,7 @@
                                 <form action="" method="POST">
                                     <select name="id" id="">
                                         <?php
-                                        $modelo->MostrarCodCita();
+                                        $modelo->MostrarCodCitaMed();
                                         ?>
                                     </select>
                             </div>

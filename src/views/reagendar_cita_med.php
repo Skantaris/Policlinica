@@ -13,7 +13,7 @@
 <body>
 <header class="d-flex align-items-center justify-content-between p-5 bg-MedioBlanco">
     <div class="logo">
-        <a href="home-paciente"><img src="Logo/Logo.svg" alt="Policlínicas
+        <a href="home-med"><img src="Logo/Logo.svg" alt="Policlínicas
             de la CSS"></a>
     </div>
     <div class="d-flex align-items-center me-5 flex-wrap">
@@ -26,10 +26,10 @@
                 </a>
             </li>
             <li class="nav-item flex-wrap">
-                <a class="btn" href="crear_cita"><h4>Crear cita</h4></a>
+                <a class="btn" href="crear_cita_med"><h4>Crear cita</h4></a>
             </li>
             <li class="nav-item">
-                <a class="btn" href="citas"> <h4>Mis citas</h4></a>
+                <a class="btn" href="mis-citas_med"> <h4>Mis citas</h4></a>
             </li>
         </ul>
         <i class="bi bi-person-circle grande"></i>
@@ -65,17 +65,17 @@
                 <p>Seleccione la hora deseada</p>
                 <input type="time" name="tiempo" id="tiempo">
             </div>
-            <p>Ingrese su cedula</p>
+            <p>Ingrese cedula del paciente</p>
             <select name="id" id="">
                 <?php
-                $modelo->MostrarCodCita();
+                $modelo->MostrarCodCitaMed();
                 ?>
             </select>
     </div>
     <div class="d-flex flex-row justify-content-end pb-5">
         <!-- Button trigger modal -->
         <button class=" cancel-box btn btn-secondary px-4 me-2" data-bs-toggle="modal" data-bs-target="#regresar">Regresar al menu</button>
-         <button class=" btn btn-secondary px-4" name="submit" type="submit">Confirmar</button>
+        <button class=" btn btn-secondary px-4" name="submit" type="submit">Confirmar</button>
     </div>
     </form>
 
@@ -138,3 +138,4 @@
 
 </body>
 </html>
+

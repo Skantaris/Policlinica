@@ -68,6 +68,7 @@
                 <p>Seleccione la hora deseada</p>
                 <input type="time" name="tiempo" id="tiempo">
             </div>
+            <p>Ingrese cedula del paciente</p>
             <select name="ced" id="">
                 <?php
                 $modelo->MostrarCedula();

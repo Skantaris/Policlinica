@@ -27,6 +27,7 @@ $app->router->addRouts("/mis-pacientes", "mis_pacientes");
 $app->router->addRouts("/crear_cita_med", "agendar_cita_med");
 $app->router->addRouts("/mis-citas_med", "mis_citas_med");
 $app->router->addRouts("/home-med", "home_med");
+$app->router->addRouts("/reagendar-med", "reagendar_cita_med");
 
 
 $app->inicio();
