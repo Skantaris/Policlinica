@@ -73,6 +73,13 @@ class Router{
                 }
             }
 
+            if ($this->routs[$path] === 'reagendar_cita_med'){
+                if (strtolower($_SERVER['REQUEST_METHOD']) === 'post'){
+                    $modelo = new Modelo();
+                    echo $modelo->ReagendarCita();
+                }
+            }
+
             if ($this->routs[$path] === 'mis_citas'){
                 if (strtolower($_SERVER['REQUEST_METHOD']) === 'post'){
                     $modelo = new Modelo();

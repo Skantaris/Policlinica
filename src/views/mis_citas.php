@@ -49,6 +49,7 @@
                     ?>
                 </div>
             </div>
+
             <div class="d-flex flex-row justify-content-end">
                 <a href="reagendar"><button class=" btn btn-secondary px-4 me-2" ">Reagendar cita</button></a>
                 <!-- Button trigger modal -->
@@ -62,10 +63,10 @@
                                 <h1 class="modal-title disable" id="exampleModalLabel">Cancelar cita</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
+                            <form action="" method="POST">
                             <div class="modal-body">
                                 ¿Esta seguro que desea cancelar la cita?
                                 <br>
-                                <form action="" method="POST">
                                 <select name="id" id="">
                                     <?php
                                     $modelo->MostrarCodCita();

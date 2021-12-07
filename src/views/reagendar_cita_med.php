@@ -31,6 +31,9 @@
             <li class="nav-item">
                 <a class="btn" href="mis-citas_med"> <h4>Mis citas</h4></a>
             </li>
+            <li class="nav-item">
+                <a class="btn" href="mis-pacientes"> <h4>Mis Pacientes</h4></a>
+            </li>
         </ul>
         <i class="bi bi-person-circle grande"></i>
     </div>
@@ -65,7 +68,7 @@
                 <p>Seleccione la hora deseada</p>
                 <input type="time" name="tiempo" id="tiempo">
             </div>
-            <p>Ingrese cedula del paciente</p>
+            <p>Ingrese numero de la cita</p>
             <select name="id" id="">
                 <?php
                 $modelo->MostrarCodCitaMed();

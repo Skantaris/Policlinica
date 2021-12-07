@@ -65,7 +65,7 @@
                 <p>Seleccione la hora deseada</p>
                 <input type="time" name="tiempo" id="tiempo">
             </div>
-            <p>Ingrese su cedula</p>
+            <p>Ingrese el ID de la cita</p>
             <select name="id" id="">
                 <?php
                 $modelo->MostrarCodCita();

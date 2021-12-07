@@ -1,6 +1,7 @@
 <?php
 namespace Policlinica\modelo;
 
+
 class Modelo{
 
     //Conectamos a la base de datos
@@ -89,9 +90,11 @@ class Modelo{
             $cedula = $_POST ['ced'];
             $especialidad = $_POST ['espec'];
             $fecha_d = $_POST ['fecha'];
-            $time = $_POST ['tiempo'];
+            $fecha_h = $_POST ['fecha_h'];
+            $time = $_POST ['tiempo_d'];
+            $time_h = $_POST ['tiempo_h'];
             $query = "UPDATE usuarios set Rol = '3' where Cedula = '$cedula'";
-            $query2 = "INSERT INTO medicos(Cedula_medico, Especialidad, fecha_disponible, hora_disponible) VALUES ('$cedula', '$especialidad', '$fecha_d', '$time')";
+            $query2 = "INSERT INTO medicos(Cedula_medico, Especialidad, fecha_desde, fecha_hasta, hora_desde, hora_hasta ) VALUES ('$cedula', '$especialidad', '$fecha_d','$fecha_h', '$time', '$time_h')";
             $query3 = "DELETE FROM paciente WHERE Cedula = '$cedula'";
             $result = mysqli_query($this->connection, $query);
             $result2 = mysqli_query ($this->connection, $query2);
@@ -107,7 +110,7 @@ class Modelo{
     }
 
     public function MostrarMedicos(){
-        $query="SELECT usuarios.Nombre,medicos.Especialidad, medicos.ID_medico, medicos.fecha_creacion, medicos.fecha_disponible, medicos.hora_disponible FROM medicos inner join usuarios ON usuarios.Cedula = medicos.Cedula_medico";
+        $query="SELECT usuarios.Nombre,medicos.Especialidad, medicos.ID_medico, medicos.fecha_creacion, medicos.fecha_desde,medicos.fecha_hasta, medicos.hora_desde, medicos.hora_hasta FROM medicos inner join usuarios ON usuarios.Cedula = medicos.Cedula_medico";
         //$query2 = "SELECT medicos.Especialidad, medicos.Cedula_medico FROM medicos inner join especialidades ON medicos.Especialidad = especialidades.Nombre_Especialidades";
         $result = mysqli_query($this->connection, $query);
         //$result2 = mysqli_query ($connection, $query2);
@@ -126,10 +129,10 @@ class Modelo{
             $fecha = $row ['fecha_creacion'];
             echo "Fecha creada: $fecha";
             echo "<br>";
-            $fecha_d = $row ['fecha_disponible'];
+            $fecha_d = $row ['fecha_desde'];
             echo "Fecha disponible: $fecha_d";
             echo "<br>";
-            $tiempo = $row ['hora_disponible'];
+            $tiempo = $row ['fecha_hasta'];
             echo "Hora Disponible: $tiempo";
             echo "<br>";
             echo "<br>";
@@ -215,15 +218,22 @@ class Modelo{
             $fecha = $_POST['fecha'];
             $hora = $_POST['tiempo'];
             $cedula = $_POST['ced'];
-            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and hora_disponible = '$hora' and fecha_disponible = '$fecha'";
-            $query3 = "SELECT Hora_asignada, Fecha_asignada FROM citas WHERE current_date > '$fecha' and current_time > '$hora'";
+            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
+            $query3 = "SELECT Hora_asignada, Fecha_asignada FROM citas WHERE current_date >= '$fecha'";
+            $query4 = "SELECT usuarios.Correo FROM usuarios inner join paciente ON usuarios.Cedula = paciente.Cedula WHERE usuarios.Cedula = '$cedula'";
             $result2 = mysqli_query($this->connection, $query2);
             $result3 = mysqli_query($this->connection, $query3);
+            $result4 = mysqli_query($this->connection, $query4);
             $record = mysqli_fetch_array($result2);
-           if ($record and $result3){
+            $record2 = mysqli_fetch_array($result4);
+           if ($record and $result3 and $record2){
                $query = "INSERT INTO citas(clinica_name,especialidad, Fecha_asignada, Hora_asignada, Permisos, Rol_usuario,Cedula_usuario) VALUES ('$clinic','$especial', '$fecha', '$hora', 'admin', '2', '$cedula')";
                $result = mysqli_query($this->connection, $query);
-               echo "Cita Creada";
+               $to = $record2['Cedula' == $cedula];
+               $subject ="Cita medica";
+               $message = "Se creo su cita medica";
+               mail($to,$subject,$message);
+               echo "Cita Creada, revise su correo";
            }else {
                echo "No existe el medico";
            }
@@ -277,28 +287,45 @@ class Modelo{
             $hora = $_POST['tiempo'];
             $id = $_POST['id'];
             $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha', Hora_asignada = '$hora' WHERE Codigo_cita = '$id'";
+            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
+            $query3 = "SELECT usuarios.Correo FROM usuarios inner join citas ON usuarios.Cedula = citas.Cedula_usuario WHERE citas.Codigo_cita = '$id'";
             $result = mysqli_query($this->connection, $query);
-            if ($result){
-                echo "cita actualizada";
+            $result2 = mysqli_query($this->connection, $query2);
+            $result3 = mysqli_query($this->connection, $query3);
+            $record = mysqli_fetch_array($result3);
+            if ($result and $result2 and $record){
+                $to = $record['Codigo_cita' == $id];
+                $subject ="Cita medica";
+                $message = "Se actualizo su cita";
+                mail($to,$subject,$message);
+                echo "cita actualizada, revise su correo";
             } else {
                 die('Error en la actualizacion' . mysqli_error());
             }
         }
     }
 
-    public function CancelarCita()
-    {
+    public function CancelarCita(){
         if (isset($_POST['submit'])) {
             $id = $_POST['id'];
-            $query = "DELETE FROM citas WHERE Codigo_cita = '$id'";
+            $query = "SELECT usuarios.Correo FROM usuarios inner join citas ON usuarios.Cedula = citas.Cedula_usuario WHERE citas.Codigo_cita = '$id'";
             $result = mysqli_query($this->connection, $query);
-            if ($result) {
-                echo "cita elminada";
+            $record = mysqli_fetch_array($result);
+            if ($record) {
+                $query2 = "DELETE FROM citas WHERE Codigo_cita = '$id'";
+                $result2 = mysqli_query($this->connection, $query2);
+                $to = $record['Codigo_cita' == $id];
+                $subject ="Cita medica";
+                $message = "Se elimino su cita medica";
+                mail($to,$subject,$message);
+                echo "cita eliminada, revise su correo";
             } else {
                 die('Fallo al eliminar cita' . mysqli_error());
             }
         }
     }
+
+
 
     //Funciones de Medico
     public function CrearCitaMed(){
@@ -308,15 +335,22 @@ class Modelo{
             $fecha = $_POST['fecha'];
             $hora = $_POST['tiempo'];
             $cedula = $_POST['ced'];
-            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and hora_disponible = '$hora' and fecha_disponible = '$fecha'";
+            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
             $query3 = "SELECT Hora_asignada, Fecha_asignada FROM citas WHERE current_date > '$fecha' and current_time > '$hora'";
+            $query4 = "SELECT usuarios.Correo FROM usuarios inner join paciente ON usuarios.Cedula = paciente.Cedula WHERE usuarios.Cedula = '$cedula'";
             $result2 = mysqli_query($this->connection, $query2);
             $result3 = mysqli_query($this->connection, $query3);
+            $result4 = mysqli_query($this->connection, $query4);
             $record = mysqli_fetch_array($result2);
-            if ($record and $result3){
+            $record2 = mysqli_fetch_array($result4);
+            if ($record and $result3 and $record2){
                 $query = "INSERT INTO citas(clinica_name,especialidad, Fecha_asignada, Hora_asignada, Permisos, Rol_usuario, Cedula_usuario) VALUES ('$clinic','$especial', '$fecha', '$hora', 'admin', '3', '$cedula')";
                 $result = mysqli_query($this->connection, $query);
-                echo "Cita Creada";
+                $to = $record2['Cedula' == $cedula];
+                $subject ="Cita medica";
+                $message = "Se creo su cita medica";
+                mail($to,$subject,$message);
+                echo "Cita Creada, revise su correo";
             }else {
                 echo "No existe el medico";
             }
@@ -387,8 +421,6 @@ class Modelo{
             echo "<option value='$id'>$id</option>";
         }
     }
-
-
 
 
 

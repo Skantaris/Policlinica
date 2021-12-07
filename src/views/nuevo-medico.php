@@ -81,12 +81,20 @@
                                 </select>
                             </div>
                             <div class="pb-3">
-                                <p>Seleccione fecha disponible</p>
+                                <p>Seleccione fecha desde</p>
                                 <input type="date" name="fecha" id="fecha">
                             </div>
                             <div class="pb-3">
-                                <p>Seleccione la hora deseada</p>
-                                <input type="time" name="tiempo" id="tiempo">
+                                <p>Seleccione fecha hasta</p>
+                                <input type="date" name="fecha_h" id="fecha_h">
+                            </div>
+                            <div class="pb-3">
+                                <p>Seleccione disponibilidad desde hora:</p>
+                                <input type="time" name="tiempo_d" id="tiempo_d">
+                            </div>
+                            <div class="pb-3">
+                                <p>Seleccione disponibilidad hasta hora:</p>
+                                <input type="time" name="tiempo_h" id="tiempo_h">
                             </div>
                     </div>
                     <div class="modal-footer">
