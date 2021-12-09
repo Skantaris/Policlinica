@@ -96,8 +96,9 @@ class Modelo{
             $fecha_h = $_POST ['fecha_h'];
             $time = $_POST ['tiempo_d'];
             $time_h = $_POST ['tiempo_h'];
+            $clinic = $_POST ['clinica'];
             $query = "UPDATE usuarios set Rol = '3' where Cedula = '$cedula'";
-            $query2 = "INSERT INTO medicos(Cedula_medico, Especialidad, fecha_desde, fecha_hasta, hora_desde, hora_hasta ) VALUES ('$cedula', '$especialidad', '$fecha_d','$fecha_h', '$time', '$time_h')";
+            $query2 = "INSERT INTO medicos(Cedula_medico, Especialidad, fecha_desde, fecha_hasta, hora_desde, hora_hasta, clinica_labor ) VALUES ('$cedula', '$especialidad', '$fecha_d','$fecha_h', '$time', '$time_h', '$clinic')";
             $query3 = "DELETE FROM paciente WHERE Cedula = '$cedula'";
             $result = mysqli_query($this->connection, $query);
             $result2 = mysqli_query ($this->connection, $query2);
@@ -116,7 +117,7 @@ class Modelo{
     }
 
     public function MostrarMedicos(){
-        $query="SELECT usuarios.Nombre,medicos.Especialidad, medicos.ID_medico, medicos.fecha_creacion, medicos.fecha_desde,medicos.fecha_hasta, medicos.hora_desde, medicos.hora_hasta FROM medicos inner join usuarios ON usuarios.Cedula = medicos.Cedula_medico";
+        $query="SELECT usuarios.Nombre,medicos.Especialidad, medicos.ID_medico, medicos.fecha_creacion, medicos.fecha_desde,medicos.fecha_hasta, medicos.hora_desde, medicos.hora_hasta, medicos.clinica_labor FROM medicos inner join usuarios ON usuarios.Cedula = medicos.Cedula_medico";
         $result = mysqli_query($this->connection, $query);
         if (!$result)
         die('La consulta a la tabla medicos ha fallado '. mysqli_error());
@@ -131,6 +132,9 @@ class Modelo{
             echo "<br>";
             $especialidad = $row['Especialidad'];
             echo "Especialidad del medico: $especialidad";
+            echo "<br>";
+            $clinica = $row['clinica_labor'];
+            echo "Clinica donde labora: $clinica";
             echo "<br>";
             $ID = $row['ID_medico'];
             echo "ID del medico:$ID";
@@ -252,8 +256,8 @@ class Modelo{
             $fecha = $_POST['fecha'];
             $hora = $_POST['tiempo'];
             $cedula = $_POST['ced'];
-            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
-            $query3 = "SELECT Hora_asignada, Fecha_asignada FROM citas WHERE current_date >= '$fecha'";
+            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta and clinica_labor = '$clinic'";
+            $query3 = "SELECT Hora_asignada, Fecha_asignada FROM citas WHERE current_date <= '$fecha'";
             $query4 = "SELECT usuarios.Correo FROM usuarios inner join paciente ON usuarios.Cedula = paciente.Cedula WHERE usuarios.Cedula = '$cedula'";
             $result2 = mysqli_query($this->connection, $query2);
             $result3 = mysqli_query($this->connection, $query3);
@@ -331,7 +335,7 @@ class Modelo{
             $fecha = $_POST['fecha'];
             $hora = $_POST['tiempo'];
             $id = $_POST['id'];
-            $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha', Hora_asignada = '$hora' WHERE Codigo_cita = '$id'";
+            $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha', Hora_asignada = '$hora' WHERE Codigo_cita = '$id' and clinica_labor = '$clinic'";
             $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
             $query3 = "SELECT usuarios.Correo FROM usuarios inner join citas ON usuarios.Cedula = citas.Cedula_usuario WHERE citas.Codigo_cita = '$id'";
             $result = mysqli_query($this->connection, $query);
@@ -388,7 +392,7 @@ class Modelo{
             $fecha = $_POST['fecha'];
             $hora = $_POST['tiempo'];
             $cedula = $_POST['ced'];
-            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
+            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta and clinica_labor = '$clinic'";
             $query3 = "SELECT Hora_asignada, Fecha_asignada FROM citas WHERE current_date > '$fecha' and current_time > '$hora'";
             $query4 = "SELECT usuarios.Correo FROM usuarios inner join paciente ON usuarios.Cedula = paciente.Cedula WHERE usuarios.Cedula = '$cedula'";
             $result2 = mysqli_query($this->connection, $query2);

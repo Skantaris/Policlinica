@@ -51,7 +51,7 @@
                     ?>
                 </div>
             </div>
-            <div class="d-flex flex-row justify-content-end">
+            <div class="d-flex flex-row justify-content-end mb-5">
                 <a href="reagendar-med"><button class=" btn btn-secondary px-4 me-2" ">Reagendar cita</button></a>
                 <!-- Button trigger modal -->
                 <button class=" cancel-box btn btn-secondary px-4" data-bs-toggle="modal" data-bs-target="#cancelar">Cancelar cita</button>

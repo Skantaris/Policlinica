@@ -88,27 +88,27 @@
     <div class="col align-self-center py-5">
         <ul class="d-flex flex-row list-group list-unstyled justify-content-center">
             <li>
-                <a class="a2 col p-4 medio" href="">
+                <a class="a2 col p-4 medio" href="https://www.facebook.com/csspanama/">
                     <i class="bi bi-facebook grande"></i>
                 </a>
             </li>
             <li>
-                <a class="a2 col p-4 medio" href="">
+                <a class="a2 col p-4 medio" href="https://www.instagram.com/csspanama/">
                     <i class="bi bi-instagram grande"></i>
                 </a>
             </li>
             <li>
-                <a class="a2 col p-4 medio" href="">
+                <a class="a2 col p-4 medio" href="https://www.pinterest.com/csspty/">
                     <i class="bi bi-pinterest grande"></i>
                 </a>
             </li>
             <li>
-                <a class="a2 col p-4 medio" href="">
+                <a class="a2 col p-4 medio" href="https://twitter.com/CSSPanama">
                     <i class="bi bi-twitter grande"></i>
                 </a>
             </li>
             <li>
-                <a class="a2 col p-4 medio " href="">
+                <a class="a2 col p-4 medio " href="https://www.youtube.com/channel/UCZdS9JCK1c3guohAnmR1eiA">
                     <i class="bi bi-youtube grande"></i>
                 </a>
             </li>
