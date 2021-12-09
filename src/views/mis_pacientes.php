@@ -48,24 +48,27 @@
 
 
 </header>
-<!-- cuerpo -->
+
 <div class="container">
     <br>
     <h5>Lista de pacientes: </h5>
 </div>
-<div class="container d-flex justify-content-between bg-MedioBlanco px-4 py-5 mb-3">
-    <div class="d-flex">
-
-        <div class="d-flex align-items-center flex-column ">
-            <div class="d-flex container">
+<div class="d-flex flex-row container justify-content-center bg">
+    <div class="bg-disable px-5">
+        <div class="d-flex justify-content-between mt-3">
+            <div class="d-flex flex-column pe-5">
                 <?php
-                    $modelo->MostrarPaciente();
+                $modelo->MostrarPaciente();
                 ?>
+
             </div>
         </div>
-    </div>
 
+    </div>
 </div>
+<!-- cuerpo -->
+
+
 
 
 <!--Pie de pagina -->

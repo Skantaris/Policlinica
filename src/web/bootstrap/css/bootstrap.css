@@ -4917,18 +4917,18 @@ textarea.form-control-lg {
 }
 
 .alert-primary {
-  color: #084298;
-  background-color: #cfe2ff;
-  border-color: #b6d4fe;
+  color: #FFFFFF;
+  background-color: #39C090;
+  border-color: #39C090;
 }
 .alert-primary .alert-link {
   color: #06357a;
 }
 
 .alert-secondary {
-  color: #41464b;
-  background-color: #e2e3e5;
-  border-color: #d3d6d8;
+  color: #FFFFFF;
+  background-color: #AE0B0B;
+  border-color: #AE0B0B;
 }
 .alert-secondary .alert-link {
   color: #34383c;

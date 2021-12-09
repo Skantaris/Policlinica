@@ -77,28 +77,10 @@
     </div>
     <div class="d-flex flex-row justify-content-end pb-5">
         <!-- Button trigger modal -->
-        <button class=" cancel-box btn btn-secondary px-4 me-2" data-bs-toggle="modal" data-bs-target="#regresar">Regresar al menu</button>
         <button class=" btn btn-secondary px-4" name="submit" type="submit">Confirmar</button>
     </div>
     </form>
 
-    <!-- Modal -->
-    <div class="modal fade" id="regresar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header bg-MedioBlanco">
-                    <h1 class="modal-title disable" id="exampleModalLabel">Regresar al menu</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    ¿Esta seguro que desea cancelar la programación de cita?
-                </div>
-                <div class="modal-footer">
-                    <a class="btn btn-secondary px-4" href="Inicio.html">Confirmar</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <footer class="bg-MedioBlanco d-flex flex-row justify-content-between ">

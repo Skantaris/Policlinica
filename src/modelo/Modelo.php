@@ -27,11 +27,13 @@ class Modelo{
             $result = mysqli_query($this->connection,$query);
             $result2 = mysqli_query ($this->connection, $query2);
             if ($result and $result2) {
-                echo "Registro realizado con éxito";
-            }
-            else
-            {
-                die('La inserción de los datos ha fallado '. mysqli_error());
+                echo '<div class="alert alert-primary" role="alert"> ';
+                echo 'Registro realizado con exito';
+                echo '</div>';
+            }else {
+                echo '<div class="alert alert-secondary" role="alert"> ';
+                echo 'Fallo al ingresar datos';
+                echo '</div>';
             }
 
         }
@@ -56,8 +58,9 @@ class Modelo{
     } else if ($record['Rol'] == 3){
         header("Location: medico");
     } else{
-        echo "Error, No ha creado una cuenta.";
-
+        echo '<div class="alert alert-secondary" role="alert"> ';
+        echo 'Error, no ha creado una cuenta';
+        echo '</div>';
     }
     mysqli_free_result($result);
 
@@ -100,10 +103,13 @@ class Modelo{
             $result2 = mysqli_query ($this->connection, $query2);
             $result3 = mysqli_query ($this->connection, $query3);
             if ($result and $result2 and $result3){
-                echo "Se agrego un nuevo medico";
-                header("Location: addMedico");
-            } else {
-                die ("El medico no se agrego". mysqli_error());
+                echo '<div class="alert alert-primary" role="alert"> ';
+                echo 'Nuevo medico ingresado';
+                echo '</div>';
+            }else {
+                echo '<div class="alert alert-secondary" role="alert"> ';
+                echo 'Fallo al ingresar el nuevo medico';
+                echo '</div>';
             }
             mysqli_close($this->connection);
         }
@@ -151,9 +157,13 @@ class Modelo{
             $query = "INSERT INTO especialidades(Nombre_Especialidades, Permisos) VALUES ('$nombre', 'admin')";
             $result = mysqli_query($this->connection, $query);
             if ($result){
-                header ("Location: addEspec");
-            } else {
-                die ('La insercion a fallado' . mysqli_error());
+                echo '<div class="alert alert-primary" role="alert"> ';
+                echo 'Nueva especialidad agregada';
+                echo '</div>';
+            }else {
+                echo '<div class="alert alert-secondary" role="alert"> ';
+                echo 'Fallo al ingresar la especialidad';
+                echo '</div>';
             }
         }
     }
@@ -164,7 +174,7 @@ class Modelo{
         if (!$result)
         die('La consulta a la tabla medicos ha fallado '. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
-            echo '<div class="d-flex pb-5">';
+            echo '<div class="d-flex pb-5 align-items-center">';
             echo '<div class="pe-5">';
             echo ' <img src="img/jeringa.svg" alt="">';
             echo '</div>';
@@ -183,9 +193,13 @@ class Modelo{
             $query = "INSERT INTO clinicas(Nombre_clinica, Direccion_clinica, Permisos) VALUES ('$nombre', '$direccion', 'admin')";
             $result = mysqli_query ($this->connection, $query);
             if ($result){
-                header ('Location: misClinicas');
-            } else {
-                die ('Fallo de ingresar la clinica' . mysqli_error());
+                echo '<div class="alert alert-primary" role="alert"> ';
+                echo 'Nueva clinica ingresada';
+                echo '</div>';
+            }else {
+                echo '<div class="alert alert-secondary" role="alert"> ';
+                echo 'Fallo al ingresar nueva clinica';
+                echo '</div>';
             }
         }
     }
@@ -196,7 +210,7 @@ class Modelo{
         if (!$result)
         die('La consulta a la tabla medicos ha fallado '. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
-            echo '<div class="d-flex pb-5">';
+            echo '<div class="d-flex pb-5 align-items-center">';
             echo '<div class="pe-5">';
             echo ' <img src="img/clinica.svg" alt="">';
             echo '</div>';
@@ -253,9 +267,13 @@ class Modelo{
                $subject ="Cita medica";
                $message = "Se creo su cita medica";
                mail($to,$subject,$message);
-               echo "Cita Creada, revise su correo";
+               echo '<div class="alert alert-primary" role="alert"> ';
+               echo 'Cita creada, revise su correo';
+               echo '</div>';
            }else {
-               echo "No existe el medico";
+               echo '<div class="alert alert-secondary" role="alert"> ';
+               echo 'No existe el medico';
+               echo '</div>';
            }
 
             }
@@ -325,9 +343,13 @@ class Modelo{
                 $subject ="Cita medica";
                 $message = "Se actualizo su cita";
                 mail($to,$subject,$message);
-                echo "cita actualizada, revise su correo";
-            } else {
-                die('Error en la actualizacion' . mysqli_error());
+                echo '<div class="alert alert-primary" role="alert"> ';
+                echo 'Cita actualizada, revise su correo';
+                echo '</div>';
+            }else {
+                echo '<div class="alert alert-secondary" role="alert"> ';
+                echo 'No existe el medico';
+                echo '</div>';
             }
         }
     }
@@ -345,9 +367,13 @@ class Modelo{
                 $subject ="Cita medica";
                 $message = "Se elimino su cita medica";
                 mail($to,$subject,$message);
-                echo "cita eliminada, revise su correo";
-            } else {
-                die('Fallo al eliminar cita' . mysqli_error());
+                echo '<div class="alert alert-primary" role="alert"> ';
+                echo 'Cita eliminada, revise su correo';
+                echo '</div>';
+            }else {
+                echo '<div class="alert alert-secondary" role="alert"> ';
+                echo 'No existe el medico';
+                echo '</div>';
             }
         }
     }
@@ -377,9 +403,13 @@ class Modelo{
                 $subject ="Cita medica";
                 $message = "Se creo su cita medica";
                 mail($to,$subject,$message);
-                echo "Cita Creada, revise su correo";
+                echo '<div class="alert alert-primary" role="alert"> ';
+                echo 'Cita creada, revise su correo';
+                echo '</div>';
             }else {
-                echo "No existe el medico";
+                echo '<div class="alert alert-secondary" role="alert"> ';
+                echo 'No existe el medico';
+                echo '</div>';
             }
 
         }
@@ -430,9 +460,9 @@ class Modelo{
         if (!$result)
             die('la muestra de mis pacientes fallo'. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
-            echo '<div class="d-flex flex-column pb-5">';
+            echo '<div class="d-flex pb-5 align-items-center">';
             echo '<div class="pe-5">';
-            echo '<img class="pe-5" src="iconos/boy.svg" alt="">';
+            echo '<img src="iconos/boy.svg" alt="">';
             echo '</div>';
             echo '<div class="">';
             $nombre = $row['Nombre'];
