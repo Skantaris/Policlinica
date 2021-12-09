@@ -38,9 +38,6 @@
 <div class="container pt-5 medio">
     <h1 class="fw-bold">MIS CITAS</h1>
     <div class="d-flex flex-row container justify-content-center">
-        <div class="">
-            <img src="img/esterocopio.svg" alt="">
-        </div>
         <div class="bg-disable px-5">
             <div class="d-flex justify-content-between mt-3">
                 <div class="d-flex flex-column align-items-center pe-5">

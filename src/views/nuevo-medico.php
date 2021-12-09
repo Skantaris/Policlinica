@@ -107,20 +107,17 @@
         </div>
     </div>
     <div class="d-flex flex-row container justify-content-center">
-        <div class="">
+        <!--<div class="">
             <img src="img/doctor.svg" alt="">
-        </div>
+        </div>-->
         <div class="bg-disable px-5">
             <div class="d-flex justify-content-between mt-3">
                 <div class="d-flex flex-column pe-5">
                     <?php
                         $modelo->MostrarMedicos();
                     ?>
+
                 </div>
-                <!--<div class="d-flex flex-column justify-content-end">
-                    <p>26/11/2021 - 10:00 a.m.</p>
-                    <p class="d-flex justify-content-end">fecha de creación</p>
-                </div>-->
             </div>
 
         </div>

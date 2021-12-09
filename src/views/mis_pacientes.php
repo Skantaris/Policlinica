@@ -55,7 +55,7 @@
 </div>
 <div class="container d-flex justify-content-between bg-MedioBlanco px-4 py-5 mb-3">
     <div class="d-flex">
-        <img class="pe-5" src="iconos/boy.svg" alt="">
+
         <div class="d-flex align-items-center flex-column ">
             <div class="d-flex container">
                 <?php

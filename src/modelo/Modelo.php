@@ -111,12 +111,15 @@ class Modelo{
 
     public function MostrarMedicos(){
         $query="SELECT usuarios.Nombre,medicos.Especialidad, medicos.ID_medico, medicos.fecha_creacion, medicos.fecha_desde,medicos.fecha_hasta, medicos.hora_desde, medicos.hora_hasta FROM medicos inner join usuarios ON usuarios.Cedula = medicos.Cedula_medico";
-        //$query2 = "SELECT medicos.Especialidad, medicos.Cedula_medico FROM medicos inner join especialidades ON medicos.Especialidad = especialidades.Nombre_Especialidades";
         $result = mysqli_query($this->connection, $query);
-        //$result2 = mysqli_query ($connection, $query2);
         if (!$result)
         die('La consulta a la tabla medicos ha fallado '. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
+            echo '<div class="d-flex pb-5">';
+            echo '<div class="pe-5">';
+            echo '<img src="img/doctor.svg" alt="">';
+            echo '</div>';
+            echo '<div class="">';
             $nombre = $row['Nombre'];
             echo "Nombre del medico: $nombre";
             echo "<br>";
@@ -136,8 +139,10 @@ class Modelo{
             echo "Hora Disponible: $tiempo";
             echo "<br>";
             echo "<br>";
+            echo '</div>';
+            echo '</div>';
             }
-        mysqli_close($this->connection);
+
     }
 
     public function AgregarEspecialidades(){
@@ -159,9 +164,15 @@ class Modelo{
         if (!$result)
         die('La consulta a la tabla medicos ha fallado '. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
+            echo '<div class="d-flex pb-5">';
+            echo '<div class="pe-5">';
+            echo ' <img src="img/jeringa.svg" alt="">';
+            echo '</div>';
+            echo '<div class="">';
             $nombre = $row['Nombre_Especialidades'];
             echo "<option value='$nombre'>$nombre</option>";
-            echo "<br>";
+            echo '</div>';
+            echo '</div>';
             }
     }
 
@@ -185,16 +196,25 @@ class Modelo{
         if (!$result)
         die('La consulta a la tabla medicos ha fallado '. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
+            echo '<div class="d-flex pb-5">';
+            echo '<div class="pe-5">';
+            echo ' <img src="img/clinica.svg" alt="">';
+            echo '</div>';
+            echo '<div class="">';
             echo "Nombre:";
             $nombre = $row['Nombre_clinica'];
             echo "<span>$nombre</span>";
+            echo "<br>";
             echo "Direccion:";
             $direccion = $row['Direccion_clinica'];
             echo "<span>$direccion</span>";
-            echo "Fecha creada";
-            $fecha = $row ['fecha_creacion'];
-            echo "<span>$fecha</span>"; 
             echo "<br>";
+            echo "Fecha creada: ";
+            $fecha = $row ['fecha_creacion'];
+            echo "<span>$fecha</span>";
+            echo "<br>";
+            echo '</div>';
+            echo '</div>';
             }
     }
 
@@ -248,6 +268,11 @@ class Modelo{
         if (!$result)
             die('la muestra de mis citas fallo'. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
+            echo '<div class="d-flex pb-5">';
+            echo '<div class="pe-5">';
+            echo '<img src="img/esterocopio.svg" alt="">';
+            echo '</div>';
+            echo '<div class="">';
             $nombre = $row['clinica_name'];
             echo "Nombre de la clinica: $nombre";
             echo "<br>";
@@ -267,6 +292,8 @@ class Modelo{
             echo "Cita creada: $fecha_c";
             echo "<br>";
             echo "<br>";
+            echo '</div>';
+            echo '</div>';
         }
     }
 
@@ -364,6 +391,11 @@ class Modelo{
         if (!$result)
             die('la muestra de mis citas fallo'. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
+            echo '<div class="d-flex pb-5">';
+            echo '<div class="pe-5">';
+            echo '<img src="img/esterocopio.svg" alt="">';
+            echo '</div>';
+            echo '<div class="">';
             $nombre = $row['clinica_name'];
             echo "Nombre de la clinica: $nombre";
             echo "<br>";
@@ -386,6 +418,8 @@ class Modelo{
             echo "Cedula de Paciente: $cedula";
             echo "<br>";
             echo "<br>";
+            echo '</div>';
+            echo '</div>';
         }
     }
 
@@ -396,6 +430,11 @@ class Modelo{
         if (!$result)
             die('la muestra de mis pacientes fallo'. mysqli_error());
         while ($row=mysqli_fetch_assoc($result)) {
+            echo '<div class="d-flex flex-column pb-5">';
+            echo '<div class="pe-5">';
+            echo '<img class="pe-5" src="iconos/boy.svg" alt="">';
+            echo '</div>';
+            echo '<div class="">';
             $nombre = $row['Nombre'];
             $Apellido = $row['Apellido'];
             echo "Paciente: $nombre $Apellido";
@@ -410,6 +449,8 @@ class Modelo{
             echo "Dia de la cita: $fecha";
             echo "<br>";
             echo "<br>";
+            echo '</div>';
+            echo '</div>';
         }
     }
 
