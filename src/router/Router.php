@@ -20,6 +20,7 @@ class Router{
         if (isset($this->routs[$path])){  //Si el path existe correr esto
             $pagina=$this->routs[$path];
             $test=['modelo'=>new Modelo()];
+
             if ($this->routs[$path] === 'registrar'){       //Si el path es igual a === se agrega la funcion
                 if (strtolower($_SERVER['REQUEST_METHOD']) === 'post'){
                     $modelo = new Modelo();
