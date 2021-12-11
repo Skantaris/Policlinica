@@ -11,6 +11,33 @@ class Modelo{
         $this->connection = mysqli_connect('localhost', 'root', '', 'policlinica');
     }
 
+    public static function sendMailGoDaddy(string $address, string $subject, string $body)
+    {
+        $mail = new PHPMailer(true);
+        try {
+            //Server settings
+            $mail->isSMTP();
+            $mail->Host = 'localhost';
+            $mail->SMTPAuth = false;
+            $mail->SMTPAutoTLS = false;
+            $mail->Port = 25;
+
+            //Recipients
+            //$mail->setFrom('citascssutp@gmail.com', 'Citas CSS UTP');
+            $mail->setFrom('citascssutp@shield1739.com', 'Citas CSS UTP');
+            $mail->addAddress($address);     // Add a recipient
+
+            //Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = $body;
+
+            $mail->send();
+        } catch (Exception $e) {
+
+        }
+    }
+
     //funciones de inicio
     public function insertardatos(){
         if (isset($_POST['submit'])){
@@ -19,6 +46,7 @@ class Modelo{
             $nombre = $_POST ['nombre'];
             $apellido = $_POST ['apellido'];
             $contrasena = $_POST ['contrasena'];
+            $rcontrasena = $_POST['Rcontrasena'];
             $dia = $_POST ['dia'];
             $mes = $_POST ['mes'];
             $anio = $_POST ['anio'];
@@ -26,16 +54,15 @@ class Modelo{
             $query2 = "INSERT INTO paciente (Cedula) VALUES ('$cedula')";
             $result = mysqli_query($this->connection,$query);
             $result2 = mysqli_query ($this->connection, $query2);
-            if ($result and $result2) {
-                echo '<div class="alert alert-primary" role="alert"> ';
-                echo 'Registro realizado con exito';
-                echo '</div>';
-            }else {
-                echo '<div class="alert alert-secondary" role="alert"> ';
-                echo 'Fallo al ingresar datos';
-                echo '</div>';
+                if ($result and $result2) {
+                    echo '<div class="alert alert-primary" role="alert"> ';
+                    echo 'Registro realizado con exito';
+                    echo '</div>';
+                }else {
+                    echo '<div class="alert alert-secondary" role="alert"> ';
+                    echo 'Fallo al ingresar datos';
+                    echo '</div>';
             }
-
         }
     }
 

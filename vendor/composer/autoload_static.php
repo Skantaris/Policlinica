@@ -10,6 +10,7 @@ class ComposerStaticInitd09e81b5617bf7333d382ee0eebbdb9a
         'P' => 
         array (
             'Policlinica\\' => 12,
+            'PHPMailer\\PHPMailer\\' => 20,
         ),
     );
 
@@ -17,6 +18,10 @@ class ComposerStaticInitd09e81b5617bf7333d382ee0eebbdb9a
         'Policlinica\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
     );
 
