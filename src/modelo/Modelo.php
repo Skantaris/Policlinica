@@ -277,7 +277,7 @@ class Modelo{
                echo '</div>';
            }else {
                echo '<div class="alert alert-secondary" role="alert"> ';
-               echo 'No existe el medico';
+               echo 'No existe el medico o cedula ingresada fue incorrecta';
                echo '</div>';
            }
 
@@ -353,7 +353,7 @@ class Modelo{
                 echo '</div>';
             }else {
                 echo '<div class="alert alert-secondary" role="alert"> ';
-                echo 'No existe el medico';
+                echo 'Datos del medico erroneo, intente nuevamente';
                 echo '</div>';
             }
         }
@@ -377,7 +377,7 @@ class Modelo{
                 echo '</div>';
             }else {
                 echo '<div class="alert alert-secondary" role="alert"> ';
-                echo 'No existe el medico';
+                echo 'Error';
                 echo '</div>';
             }
         }
@@ -413,7 +413,7 @@ class Modelo{
                 echo '</div>';
             }else {
                 echo '<div class="alert alert-secondary" role="alert"> ';
-                echo 'No existe el medico';
+                echo 'No existe el medico o cedula ingresada fue incorrecta';
                 echo '</div>';
             }
 
