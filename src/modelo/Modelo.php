@@ -27,7 +27,6 @@ class Modelo{
             $query2 = "INSERT INTO paciente (Cedula) VALUES ('$cedula')";
             $result = mysqli_query($this->connection,$query);
             $result2 = mysqli_query ($this->connection, $query2);
-            if ($contrasena == $rcontrasena);{
                 if ($result and $result2) {
                     echo '<div class="alert alert-primary" role="alert"> ';
                     echo 'Registro realizado con exito';
@@ -37,9 +36,9 @@ class Modelo{
                     echo 'Fallo al ingresar datos';
                     echo '</div>';
                 }
-            }
         }
     }
+
 
     public function IniciarSesion(){
     if (isset($_POST['entrar'])){

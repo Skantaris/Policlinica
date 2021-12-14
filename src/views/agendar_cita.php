@@ -67,11 +67,10 @@
             <input type="time" name="tiempo" id="tiempo">
         </div>
             <p>Ingrese su cedula</p>
-            <select name="ced" id="ced">
-                <?php
-                $modelo->MostrarCedula();
-                ?>
-            </select>
+            <div class="mb-3 row">
+                <label for="ced" class="form-label">Cédula</label>
+                <input type="text" class="form-control" name="ced" id="ced">
+            </div>
     </div>
     <div class="d-flex flex-row justify-content-end pb-5">
         <!-- Button trigger modal -->

@@ -24,11 +24,7 @@
                         </div>
                         <div class="mb-3 row">
                             <label for="contrasena" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" name="contrasena" id="contrasena">
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="Rcontrasena" class="form-label">Repetir contraseña</label>
-                            <input type="password" class="form-control" name="Rcontrasena" id="Rcontrasena">
+                            <input type="password" class="form-control" name="contrasena" id="contrasena" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="La constraseña debe tener minimo 8 caracter, un número, una letra mayúscula, una minuscula y caracter especiales">
                         </div>
                     </div>
                 </div>
