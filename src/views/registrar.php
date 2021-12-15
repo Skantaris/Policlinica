@@ -49,7 +49,7 @@
                             <div class="mb-3 row">
                             <label for="dia" class="form-label">Fecha de nacimiento</label>
                             <div class="col-md-1 me-2">
-                                <div class="row"><input class="form-control" type="text" name="dia" id="dia" placeholder="Día" pattern="[1-9]|[1-2][0-9]|[3][0-1]" require></div>
+                                <div class="row"><input class="form-control" type="text" name="dia" id="dia" placeholder="Día" pattern="([1-9]|[1-2][0-9]|[3][0-1])" require></div>
                             </div>
                             <div class="col-md-1 me-2">
                                 <div class="row">
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="col-md-1 me-2">
-                                <div class="row"><input class="form-control" type="text" name="anio" id="anio" placeholder="año" require></div>
+                                <div class="row"><input class="form-control" type="text" name="anio" id="anio" placeholder="año" pattern="[1][9][1-9][0-9]|[2][0][0][0-3]" require></div>
                             </div>
                         </div>
                     </div>
