@@ -44,12 +44,12 @@
                         
                         <div class="mb-3 row">
                             <label for="cedula" class="form-label">Cédula</label>
-                            <input type="text" class="form-control" name="cedula" id="cedula" patter="([1][0-3]|[1-9]|[E])[-]([\d]{3}|[\d]{4})[-]([\d]{3}|[\d]{4})" require>
+                            <input type="text" class="form-control" name="cedula" id="cedula" patter="([1][0-3]|[1-9])[-]([\d]{3})[-]([\d]{3}|[\d]{4})" require>
                         </div>
                             <div class="mb-3 row">
                             <label for="dia" class="form-label">Fecha de nacimiento</label>
                             <div class="col-md-1 me-2">
-                                <div class="row"><input class="form-control" type="text" name="dia" id="dia" placeholder="Día" require></div>
+                                <div class="row"><input class="form-control" type="text" name="dia" id="dia" placeholder="Día" pattern="[1-9]|[1-2][0-9]|[3][0-1]" require></div>
                             </div>
                             <div class="col-md-1 me-2">
                                 <div class="row">
