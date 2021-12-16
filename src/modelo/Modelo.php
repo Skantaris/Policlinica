@@ -359,14 +359,18 @@ class Modelo{
             $fecha = $_POST['fecha'];
             $hora = $_POST['tiempo'];
             $id = $_POST['id'];
-            $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha', Hora_asignada = '$hora' WHERE Codigo_cita = '$id' and clinica_name = '$clinic'";
+            $date = '2021-12-18';
             $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
             $query3 = "SELECT usuarios.Correo FROM usuarios inner join citas ON usuarios.Cedula = citas.Cedula_usuario WHERE citas.Codigo_cita = '$id'";
-            $result = mysqli_query($this->connection, $query);
+            $query4 = "SELECT Hora_asignada, Fecha_asignada FROM citas inner join medicos ON citas.Cedula_usuario = medicos.Cedula_medico WHERE current_date <= '$fecha' and '$hora' between  medicos.hora_desde and medicos.hora_hasta";
             $result2 = mysqli_query($this->connection, $query2);
             $result3 = mysqli_query($this->connection, $query3);
+            $result4 = mysqli_query($this->connection, $query4);
             $record = mysqli_fetch_array($result3);
-            if ($result and $result2 and $record){
+            $record2 = mysqli_fetch_array($result4);
+            if ($result2 and $record and $result4 and $record2){
+                $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha' , Hora_asignada = '$hora' WHERE Codigo_cita = '$id' and clinica_name = '$clinic' ";
+                $result = mysqli_query($this->connection, $query);
                 $to = $record['Codigo_cita' == $id];
                 $subject ="Cita medica";
                 $message = "Se actualizo su cita";
@@ -375,10 +379,9 @@ class Modelo{
                 echo 'Cita actualizada, revise su correo';
                 echo '</div>';
             }else {
-                die("error" . mysqli_error());
-                /*echo '<div class="alert alert-secondary" role="alert"> ';
+                echo '<div class="alert alert-secondary" role="alert"> ';
                 echo 'Datos del medico erroneo, intente nuevamente';
-                echo '</div>';*/
+                echo '</div>';
             }
         }
     }

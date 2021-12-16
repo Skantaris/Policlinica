@@ -59,11 +59,11 @@
             </div>
             <div class="pb-3">
                 <p>Seleccione la fecha deseada</p>
-                <input type="date" name="fecha" id="fecha">
+                <input type="date" name="fecha" id="fecha" required>
             </div>
             <div class="pb-3">
                 <p>Seleccione la hora deseada</p>
-                <input type="time" name="tiempo" id="tiempo">
+                <input type="time" name="tiempo" id="tiempo" required>
             </div>
             <p>Ingrese el ID de la cita</p>
             <select name="id" id="">
