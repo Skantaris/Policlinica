@@ -19,7 +19,7 @@ class Modelo{
             $nombre = $_POST ['nombre'];
             $apellido = $_POST ['apellido'];
             $contrasena = $_POST ['contrasena'];
-            $rcontrasena = $_POST['Rcontrasena'];
+            $rcontrasena = $_POST['Rcontrasena']; 
             $dia = $_POST ['dia'];
             $mes = $_POST ['mes'];
             $anio = $_POST ['anio'];
@@ -69,6 +69,29 @@ class Modelo{
 
         }
 
+    public function listar(){
+        $this->clientes = $this->obtenerUsuarios();
+        return $this->clientes;
+    }
+
+    public function obtenerUsuarios()
+    {
+        $query = "SELECT * FROM usuarios";
+        $result = mysqli_query($this->connection, $query);
+        while ($row = $result->fetch_assoc()) {
+            $clientes[] = $row;
+        }
+        return $clientes;
+    }
+
+    public function getCedula(){
+        $query = "SELECT Cedula FROM usuarios";
+        $result = mysqli_query($this->connection, $query);
+        while ($row = $result->fetch_assoc()) {
+            $cedula[] = $row;
+        }
+        return $cedula;
+    }
 
     public function CerrarSesion(){
         session_start();
