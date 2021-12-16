@@ -40,7 +40,7 @@
 </header>
 
 <div class="container pt-5 medio">
-    <h1 class="fw-bold">AGENDAR CITA</h1>
+    <h1 class="fw-bold">REAGENDAR CITA</h1>
     <div class="container">
         <P>Llene los siguientes campos: </P>
         <form action="" method="POST">

@@ -359,7 +359,7 @@ class Modelo{
             $fecha = $_POST['fecha'];
             $hora = $_POST['tiempo'];
             $id = $_POST['id'];
-            $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha', Hora_asignada = '$hora' WHERE Codigo_cita = '$id' and clinica_labor = '$clinic'";
+            $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha', Hora_asignada = '$hora' WHERE Codigo_cita = '$id' and clinica_name = '$clinic'";
             $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
             $query3 = "SELECT usuarios.Correo FROM usuarios inner join citas ON usuarios.Cedula = citas.Cedula_usuario WHERE citas.Codigo_cita = '$id'";
             $result = mysqli_query($this->connection, $query);
@@ -375,9 +375,10 @@ class Modelo{
                 echo 'Cita actualizada, revise su correo';
                 echo '</div>';
             }else {
-                echo '<div class="alert alert-secondary" role="alert"> ';
+                die("error" . mysqli_error());
+                /*echo '<div class="alert alert-secondary" role="alert"> ';
                 echo 'Datos del medico erroneo, intente nuevamente';
-                echo '</div>';
+                echo '</div>';*/
             }
         }
     }
