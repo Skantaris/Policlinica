@@ -20,11 +20,11 @@
                     <div class="col">
                         <div class="mb-3 row">
                             <label for="correo" class="form-label">Correo</label>
-                            <input type="email" name="correo" id="correo">
+                            <input type="email" name="correo" id="correo" require>
                         </div>
                         <div class="mb-3 row">
                             <label for="contrasena" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" name="contrasena" id="contrasena" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="La constraseña debe tener minimo 8 caracter, un número, una letra mayúscula, una minuscula y caracter especiales">
+                            <input type="password" class="form-control" name="contrasena" id="contrasena" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="La constraseña debe tener minimo 8 caracter, un número, una letra mayúscula, una minuscula y caracter especiales" require>
                         </div>
                     </div>
                 </div>
@@ -34,26 +34,26 @@
                         <div class="row mb-3">
                             <div class="col d-flex flex-column bd-highligh">
                                 <label for="nombre" class="form-label">Nombre</label>
-                                <input class="d-flex flex-column bd-highlight" type="text" class="form-control" name="nombre" id="nombre">
+                                <input class="d-flex flex-column bd-highlight" type="text" class="form-control" name="nombre" id="nombre" require>
                             </div>
                             <div class="col d-flex flex-column bd-highligh">
                                 <label for="apellido" class="form-label">Apellido</label>
-                                <input class="d-flex flex-column bd-highlight" type="text" class="form-control" name="apellido" id="apellido">
+                                <input class="d-flex flex-column bd-highlight" type="text" class="form-control" name="apellido" id="apellido" require>
                             </div>
                         </div>
                         
                         <div class="mb-3 row">
                             <label for="cedula" class="form-label">Cédula</label>
-                            <input type="text" class="form-control" name="cedula" id="cedula">
+                            <input type="text" class="form-control" name="cedula" id="cedula" patter="([1][0-3]|[1-9])[-]([\d]{3})[-]([\d]{3}|[\d]{4})" require>
                         </div>
                             <div class="mb-3 row">
                             <label for="dia" class="form-label">Fecha de nacimiento</label>
                             <div class="col-md-1 me-2">
-                                <div class="row"><input class="form-control" type="text" name="dia" id="dia" placeholder="Día"></div>
+                                <div class="row"><input class="form-control" type="text" name="dia" id="dia" placeholder="Día" pattern="([1-9]|[1-2][0-9]|[3][0-1])" require></div>
                             </div>
                             <div class="col-md-1 me-2">
                                 <div class="row">
-                                    <select class="form-select" name="mes" id="mes" placeholder="mes">
+                                    <select class="form-select" name="mes" id="mes" placeholder="mes" require>
                                         <option value="enero">enero</option>
                                         <option value="febrero">febrero</option>
                                         <option value="marzo">marzo</option>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="col-md-1 me-2">
-                                <div class="row"><input class="form-control" type="text" name="anio" id="anio" placeholder="año"></div>
+                                <div class="row"><input class="form-control" type="text" name="anio" id="anio" placeholder="año" pattern="[1][9][1-9][0-9]|[2][0][0][0-3]" require></div>
                             </div>
                         </div>
                     </div>

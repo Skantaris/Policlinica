@@ -60,7 +60,7 @@ class Modelo{
         header("Location: medico");
     } else{
         echo '<div class="alert alert-secondary" role="alert"> ';
-        echo 'Error, no ha creado una cuenta';
+        echo 'Los datos que se ingreso es invalido';
         echo '</div>';
     }
     mysqli_free_result($result);

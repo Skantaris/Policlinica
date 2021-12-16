@@ -52,7 +52,7 @@
         </div>
         <div class="pb-3">
             <p>Seleccione la especialidad que se desea consultar</p>
-            <select class="form-select" name="espec" id="espec" >
+            <select class="form-select" name="espec" id="espec" require>
                 <?php
                 $modelo->MostrarEspecialidad();
                 ?>
@@ -60,16 +60,16 @@
         </div>
         <div class="pb-3">
             <p>Seleccione la fecha deseada</p>
-            <input type="date" name="fecha" id="fecha">
+            <input type="date" name="fecha" id="fecha" require>
         </div>
         <div class="pb-3">
             <p>Seleccione la hora deseada</p>
-            <input type="time" name="tiempo" id="tiempo">
+            <input type="time" name="tiempo" id="tiempo" require>
         </div>
             <p>Ingrese su cedula</p>
             <div class="mb-3 row">
                 <label for="ced" class="form-label">Cédula</label>
-                <input type="text" class="form-control" name="ced" id="ced">
+                <input type="text" class="form-control" name="ced" id="ced" require>
             </div>
     </div>
     <div class="d-flex flex-row justify-content-end pb-5">
