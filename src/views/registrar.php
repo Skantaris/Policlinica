@@ -24,7 +24,7 @@
                         </div>
                         <div class="mb-3 row">
                             <label for="contrasena" class="form-label">Contraseña</label>
-                            <input type="password" class="form-control" name="contrasena" id="contrasena" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="La constraseña debe tener minimo 8 caracter, un número, una letra mayúscula, una minuscula y caracter especiales" required>
+                            <input type="password" class="form-control" name="contrasena" id="contrasena" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="La constraseña debe tener minimo 8 caracter, una letra mayúscula, una minuscula y caracter especiales" required>
                         </div>
                     </div>
                 </div>
@@ -46,33 +46,7 @@
                             <label for="cedula" class="form-label">Cédula</label>
                             <input type="text" class="form-control" name="cedula" id="cedula" pattern="([1][0-3]|[1-9])[-]([\d]{3})[-]([\d]{3}|[\d]{4})" required>
                         </div>
-                            <div class="mb-3 row">
-                            <label for="dia" class="form-label">Fecha de nacimiento</label>
-                            <div class="col-md-1 me-2">
-                                <div class="row"><input class="form-control" type="text" name="dia" id="dia" placeholder="Día" pattern="([1-9]|[1-2][0-9]|[3][0-1])" required></div>
-                            </div>
-                            <div class="col-md-1 me-2">
-                                <div class="row">
-                                    <select class="form-select" name="mes" id="mes" placeholder="mes" required>
-                                        <option value="enero">enero</option>
-                                        <option value="febrero">febrero</option>
-                                        <option value="marzo">marzo</option>
-                                        <option value="abril">abril</option>
-                                        <option value="mayo">mayo</option>
-                                        <option value="junio">junio</option>
-                                        <option value="julio">julio</option>
-                                        <option value="agosto">agosto</option>
-                                        <option value="septiembre">septiembre</option>
-                                        <option value="octubre">octubre</option>
-                                        <option value="noviembre">noviembre</option>
-                                        <option value="diciembre">diciembre</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-1 me-2">
-                                <div class="row"><input class="form-control" type="text" name="anio" id="anio" placeholder="año" pattern="[1][9][1-9][0-9]|[2][0][0][0-3]" required></div>
-                            </div>
-                        </div>
+                            
                     </div>
                 </div>      
             </div>

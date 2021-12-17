@@ -19,11 +19,12 @@ class Modelo{
             $nombre = $_POST ['nombre'];
             $apellido = $_POST ['apellido'];
             $contrasena = $_POST ['contrasena'];
-            $rcontrasena = $_POST['Rcontrasena']; 
-            $dia = $_POST ['dia'];
-            $mes = $_POST ['mes'];
-            $anio = $_POST ['anio'];
-            $query="INSERT INTO usuarios(Cedula, Correo, Nombre, Apellido, Contrasena, Dia, Mes, Anio, Rol, Permisos) VALUES ('$cedula', '$correo', '$nombre', '$apellido', '$contrasena', '$dia', '$mes', '$anio', '2', 'admin')";
+            // $rcontrasena = $_POST['Rcontrasena']; 
+            // $dia = $_POST ['dia'];
+            // $mes = $_POST ['mes'];
+            // $anio = $_POST ['anio'];
+            // $query="INSERT INTO usuarios(Cedula, Correo, Nombre, Apellido, Contrasena, Dia, Mes, Anio, Rol, Permisos) VALUES ('$cedula', '$correo', '$nombre', '$apellido', '$contrasena', '$dia', '$mes', '$anio', '2', 'admin')";
+            $query="INSERT INTO usuarios(Cedula, Correo, Nombre, Apellido, Contrasena, Rol, Permisos) VALUES ('$cedula', '$correo', '$nombre', '$apellido', '$contrasena', '2', 'admin')";
             $query2 = "INSERT INTO paciente (Cedula) VALUES ('$cedula')";
             $result = mysqli_query($this->connection,$query);
             $result2 = mysqli_query ($this->connection, $query2);
@@ -294,7 +295,7 @@ class Modelo{
                $to = $record2['Cedula' == $cedula];
                $subject ="Cita medica";
                $message = "Se creo su cita medica";
-               mail($to,$subject,$message);
+               //mail($to,$subject,$message);
                echo '<div class="alert alert-primary" role="alert"> ';
                echo 'Cita creada, revise su correo';
                echo '</div>';
@@ -353,38 +354,39 @@ class Modelo{
     }
 
     public function ReagendarCita(){
-        if (isset($_POST['submit'])){
-            $clinic = $_POST['clinic'];
-            $especial = $_POST['espec'];
-            $fecha = $_POST['fecha'];
-            $hora = $_POST['tiempo'];
-            $id = $_POST['id'];
-            $date = '2021-12-18';
-            $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
-            $query3 = "SELECT usuarios.Correo FROM usuarios inner join citas ON usuarios.Cedula = citas.Cedula_usuario WHERE citas.Codigo_cita = '$id'";
-            $query4 = "SELECT Hora_asignada, Fecha_asignada FROM citas inner join medicos ON citas.Cedula_usuario = medicos.Cedula_medico WHERE current_date <= '$fecha' and '$hora' between  medicos.hora_desde and medicos.hora_hasta";
-            $result2 = mysqli_query($this->connection, $query2);
-            $result3 = mysqli_query($this->connection, $query3);
-            $result4 = mysqli_query($this->connection, $query4);
-            $record = mysqli_fetch_array($result3);
-            $record2 = mysqli_fetch_array($result4);
-            if ($result2 and $record and $result4 and $record2){
-                $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha' , Hora_asignada = '$hora' WHERE Codigo_cita = '$id' and clinica_name = '$clinic' ";
-                $result = mysqli_query($this->connection, $query);
-                $to = $record['Codigo_cita' == $id];
-                $subject ="Cita medica";
-                $message = "Se actualizo su cita";
-                mail($to,$subject,$message);
-                echo '<div class="alert alert-primary" role="alert"> ';
-                echo 'Cita actualizada, revise su correo';
-                echo '</div>';
-            }else {
-                echo '<div class="alert alert-secondary" role="alert"> ';
-                echo 'Datos del medico erroneo, intente nuevamente';
-                echo '</div>';
+    if (isset($_POST['submit'])){
+                $clinic = $_POST['clinic'];
+                $especial = $_POST['espec'];
+                $fecha = $_POST['fecha'];
+                $hora = $_POST['tiempo'];
+                $id = $_POST['id'];
+                $query2 = "SELECT ID_medico FROM medicos WHERE Especialidad = '$especial' and '$fecha' between fecha_desde and fecha_hasta and '$hora' between hora_desde and hora_hasta";
+                $query3 = "SELECT usuarios.Correo FROM usuarios inner join citas ON usuarios.Cedula = citas.Cedula_usuario WHERE citas.Codigo_cita = '$id'";
+                $query4 = "SELECT Hora_asignada, Fecha_asignada FROM citas inner join medicos ON citas.Cedula_usuario = medicos.Cedula_medico WHERE current_date <= '$fecha'";
+                $result2 = mysqli_query($this->connection, $query2);
+                $result3 = mysqli_query($this->connection, $query3);
+                $result4 = mysqli_query($this->connection, $query4);
+                $record = mysqli_fetch_array($result3);
+                $record2 = mysqli_fetch_array($result4);
+                $record3 = mysqli_fetch_array($result2);
+    if ($record3 and $record and $record2){
+                    $query="UPDATE citas SET clinica_name = '$clinic', Especialidad = '$especial', Fecha_asignada = '$fecha' , Hora_asignada = '$hora' WHERE Codigo_cita = '$id' and clinica_name = '$clinic' ";
+                    $result = mysqli_query($this->connection, $query);
+                    $to = $record['Codigo_cita' == $id];
+                    $subject ="Cita medica";
+                    $message = "Se actualizo su cita";
+                    mail($to,$subject,$message);
+                    echo '<div class="alert alert-primary" role="alert"> ';
+                    echo 'Cita actualizada, revise su correo';
+                    echo '</div>';
+                }else {
+                    echo '<div class="alert alert-secondary" role="alert"> ';
+                    echo 'Datos del medico erroneo, intente nuevamente';
+                    echo '</div>';
+                }
             }
         }
-    }
+
 
     public function CancelarCita(){
         if (isset($_POST['submit'])) {
